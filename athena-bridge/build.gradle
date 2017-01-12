@@ -1,0 +1,41 @@
+group 'jp.cloudpack.athena'
+version '1.0'
+
+buildscript {
+    ext.kotlin_version = '1.0.4'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    compile 'com.amazonaws:aws-lambda-java-core:1.1.0'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.7.1-2'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.0'
+    compile files('lib/AthenaJDBC41-1.0.0.jar')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task buildZip(type: Zip) {
+    from compileKotlin
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}

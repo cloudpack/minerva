@@ -1,0 +1,9 @@
+.DS_Store
+.idea
+web/node_modules
+web/dist/js
+web/js/dist
+web/js/src/config.json
+athena-bridge/src/main/kotlin/athena/config.json
+athena-bridge/.gradle
+athena-bridge/build
