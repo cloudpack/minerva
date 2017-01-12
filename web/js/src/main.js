@@ -24,7 +24,7 @@ new Vue({
             }],
 
             // Query Pane
-            query: "SELECT request_ip, count(request_ip) as count FROM loganalyzer.logs_gcms_boss_info_elb  GROUP BY request_ip LIMIT 10;",
+            query: "",
             option: "LIMIT 10",
 
             // Result Pane
